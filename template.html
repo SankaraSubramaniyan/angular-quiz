@@ -1,0 +1,43 @@
+<div class="quiz-area" ng-show="inProgress">
+	<div ng-show="!quizOver">
+		<h2 id="question">{{question}}</h2>
+		<ul id="options" class="list-group">
+			<li style="margin-left: 10px;" class="list-group-item" ng-repeat="option in options">
+
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="answer" id="exampleRadios1" value="{{option}}">
+					<label class="form-check-label" for="answer">
+					  {{option}}
+					</label>
+				</div>
+				
+			</li>
+		</ul>
+
+		<button class="btn btn-success" ng-click="checkAnswer()" ng-show="answerMode">Submit</button>
+
+		<div ng-show="!answerMode" class="container">
+			<button ng-click="nextQuestion()" class="next-question btn btn-primary">Next</button>
+			<span ng-show="correctAns" class="text-success">That is correct!</span>
+			<span ng-show="!correctAns" class="text-danger">Sorry, that is an incorrect answer.</span>
+		</div>
+	</div>
+
+	<div ng-show="quizOver">
+		<h2>You did Well !!!</h2>
+		<button class="btn btn-danger" ng-click="reset()">Play again</button>
+	</div>
+
+	<div id="score">
+		Score: {{score}}
+	</div>
+</div>
+<div class="container">
+	<div class="intro" ng-show="!inProgress">
+		<p class="display-3 text-center">Welcome to the QuizApp</p><br>
+		<div class="container">
+			<h5 class="text-center">Are you ready to take the quiz</h5>
+			<button id="startQuiz" class="btn btn-success text-center btn-lg btn-block" ng-click="start()">Start the Quiz</button>
+		</div>
+	</div>
+</div>
